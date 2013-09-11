@@ -1,7 +1,7 @@
-phpcomplete-extended-laravlel
+phpcomplete-extended-laravel
 =============================
 
-phpcomplete-extended-laravlel is an extension of
+phpcomplete-extended-laravel is an extension of
 [phpcomplete-extended](https://github.com/m2mdas/phpcomplete-extended) plugin
 which provides autocomplete suggestions for
 [laravel](https://github.com/laravel/laravel) projects. Following completion
