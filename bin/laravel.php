@@ -3,7 +3,7 @@
  *=============================================================================
  * AUTHOR:  Mun Mun Das <m2mdas at gmail.com>
  * FILE: laravel.php
- * Last Modified: September 10, 2013
+ * Last Modified: September 11, 2013
  * License: MIT license  {{{
  *     Permission is hereby granted, free of charge, to any person obtaining
  *     a copy of this software and associated documentation files (the
@@ -278,6 +278,7 @@ class laravel
         $iocNames = array_keys($this->bindings);
         foreach ($iocNames as $iocName) {
             $ioc = $this->app->make($iocName);
+            $this->ioc_file[$iocName] = "";
             if(is_object($ioc)) {
                 $iocFQCN = get_class($ioc);
                 if(!array_key_exists($iocFQCN, $fqcn_file)) {
@@ -288,7 +289,6 @@ class laravel
                     $this->ioc_file[$iocName] = $fqcn_file[$iocFQCN];
                 }
                 $this->ioc_list[$iocName] = $iocFQCN;
-                $this->ioc_file[$iocName] = "";
             }
         }
         $this->ioc_list['app'] = 'Illuminate\Foundation\Application';
