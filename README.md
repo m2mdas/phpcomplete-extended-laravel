@@ -20,6 +20,11 @@ are available,
 * `laravel/models`  : Lists models
 * `laravel/routes`  : Lists routes
 
+Demo video (click on the image to goto youtube)
+-----------------------------------------------
+
+[![ScreenShot](http://img.youtube.com/vi/UYMNjMH9TVE/maxresdefault.jpg)](http://www.youtube.com/watch?v=UYMNjMH9TVE)
+
 
 Installation
 ------------
