@@ -115,7 +115,7 @@ function! s:get_fqcn(parentFQCN, token_data) "{{{
             let service_fqcn = s:laravel_index['ioc_list'][ioc_service]
             let isMethod = has_key(token_data,"isMethod")? token_data.isMethod : 0
             let type = isMethod? "method" : "property"
-            let fqcn = phpcomplete_extended#getFQCNForClassProperty(type, methodPropertyText, service_fqcn, 0)
+            let [fqcn, isArray] = phpcomplete_extended#getFQCNForClassProperty(type, methodPropertyText, service_fqcn, 0)
             return fqcn
         endif
     endif
