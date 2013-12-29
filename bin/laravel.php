@@ -467,6 +467,7 @@ class RouterWrapper extends Router
                 if(!array_key_exists($controller, $this->fullIndex['fqcn_file'])) {
                     return;
                 }
+                $fqcn = $controller;
                 $file = $this->fullIndex['fqcn_file'][$controller];
             }
             elseif(array_key_exists($controller, $this->controllers)) {
