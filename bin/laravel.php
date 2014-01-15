@@ -431,9 +431,14 @@ class RouterWrapper extends Router
         $this->process('resource', func_get_args());
     }
 
+    public function controller($uri, $controller, $names = array())
+    {
+        $this->process('controller', func_get_args());
+    }
+
     public function process($name, $arguments)
     {
-        $validFuncNames = array('get', 'post', 'put', 'delete', 'patch', 'any', 'resource');
+        $validFuncNames = array('get', 'post', 'put', 'delete', 'patch', 'any', 'resource', 'controller');
         if(!in_array($name, $validFuncNames)) {
             return;
         }
