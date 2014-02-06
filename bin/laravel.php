@@ -131,6 +131,13 @@ class laravel
         //override service providers to process packages
         $this->classMap['Illuminate\Support\ServiceProvider'] = __DIR__.'/wrapper/ServiceProvider.php';
         spl_autoload_register(array($this, 'loadClass'), true, true);
+
+        //autoload workbench packages
+        $workbench = getcwd() .'/workbench';
+        if(is_dir($workbench)) {
+            Illuminate\Workbench\Starter::start($workbench);
+        }
+
         //TODO: Process packages
         global $app;
         $this->app = require_once 'bootstrap/start.php';
