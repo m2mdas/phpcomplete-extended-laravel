@@ -201,6 +201,17 @@ abstract class ServiceProvider {
 		return array();
 	}
 
+    /**
+     * Get the events that trigger this service provider to register.
+     *
+     * @return array
+     */
+    public function when()
+    {
+        return array();
+    }
+
+
 	/**
 	 * Determine if the provider is deferred.
 	 *
