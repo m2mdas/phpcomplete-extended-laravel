@@ -143,8 +143,30 @@ class laravel
         $this->app = require_once 'bootstrap/start.php';
         $this->aliases = AliasLoader::getInstance()->getAliases();
         $this->bindings = $this->app->getBindings();
+        $providers = $app['config']['app.providers'];
+        foreach ($providers as $provider) {
+            $providerObj= $this->resolveProviderClass($provider);
+            try {
+                $providerObj->boot();
+            } catch (Exception $e) {
+            }
+        }
+
+
         //AliasLoader::getInstance($this->aliases)->register();
     }
+
+	/**
+	 * Resolve a service provider instance from the class name.
+	 *
+	 * @param  string  $provider
+	 * @return \Illuminate\Support\ServiceProvider
+	 */
+	protected function resolveProviderClass($provider)
+	{
+		return new $provider($this->app);
+	}
+
 
     /**
      * Called after a class is processed
@@ -284,7 +306,10 @@ class laravel
         $fqcn_file = $fullIndex['fqcn_file'];
         $iocNames = array_keys($this->bindings);
         foreach ($iocNames as $iocName) {
-            $ioc = $this->app->make($iocName);
+            try {
+                $ioc = $this->app->make($iocName);
+            } catch (Exception $e) {
+            }
             $this->ioc_file[$iocName] = "";
             if(is_object($ioc)) {
                 $iocFQCN = get_class($ioc);
