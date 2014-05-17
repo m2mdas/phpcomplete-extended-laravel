@@ -183,10 +183,11 @@ class laravel
         }
 
         if(array_key_exists("parentclass", $classData) && $classData['parentclass'] == "Illuminate\Support\Facades\Facade") {
-            if(!array_key_exists($className, $this->aliases)) {
+            
+            if(!in_array($fqcn, $this->aliases)) {
                 return;
             }
-            //pars class file
+            //parse class file
             $startLine = $classData['methods']['all']['getFacadeAccessor']['startLine'];
             $endLine = $classData['methods']['all']['getFacadeAccessor']['endLine'];
             $classContent = file($file);
@@ -200,7 +201,8 @@ class laravel
                 }
             }
 
-            $this->facades[$className] = array(
+            $facadeName = array_search($fqcn, $this->aliases);
+            $this->facades[$facadeName] = array(
                 'facade_service' => $facade_service,
                 'facade_fqcn' => $fqcn
             );
