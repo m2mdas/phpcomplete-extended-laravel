@@ -507,11 +507,11 @@ class RouterWrapper extends Router
                     return;
                 }
                 $fqcn = $controller;
-                $file = $this->fullIndex['fqcn_file'][$controller];
+                $file = $this->fullIndex['fqcn_file'][$fqcn];
             }
             elseif(array_key_exists($controller, $this->controllers)) {
                 $fqcn = $this->controllers[$controller];
-                $file = $this->fullIndex['fqcn_file'][$controller];
+                $file = $this->fullIndex['fqcn_file'][$fqcn];
             }
             else {
                 return;
