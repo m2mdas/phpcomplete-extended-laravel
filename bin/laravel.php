@@ -460,7 +460,7 @@ class RouterWrapper extends Router
         $this->process('any', func_get_args());
     }
 
-    public function resource($pattern, $arguments)
+    public function resource($name, $controller, array $options = array())
     {
         $this->process('resource', func_get_args());
     }
